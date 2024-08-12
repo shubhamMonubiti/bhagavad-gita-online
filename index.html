@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <style>
+body{
+  background-color:#ddb497;
+}
+</style>
+</head>
+
+<body>
+
+  <h1>Bhagavad Gita</h1>
+
+<h2 id="chapter"></h2>
+<h2 id="versescount"></h2>
+<h2 id="name"> </h2>
+<h2 id="translation"></h2>
+<h2 id="meaning"></h2>
+<h2 id="summary"></h2>
+
+<script>
+
+
+
+
+ const api = "https://vedicscriptures.github.io/chapters";
+  
+  var geetafunction = async() => {
+    var geeta = await fetch(api);
+    var geetaData = await geeta.json();
+    console.log(geetaData);
+    console.log(geetaData[i]);
+
+     
+  var chapter = document.getElementById("chapter");
+  chapter.innerHTML = "Chapter:  " + geetaData[i].chapter_number + "<br><br>";
+
+  var VersesCount = document.getElementById("versescount");
+  VersesCount.innerHTML = "Verses Count:     " + geetaData[i].verses_count  + "<br><br>";
+
+  var Name = document.getElementById("name");
+  Name.innerHTML = "Name:     " + geetaData[i].name +  "<br><br>";
+
+  var translation = document.getElementById("translation");
+  translation.innerHTML = "Translation:    " + geetaData[i].translation +  "<br><br>";
+
+  var Meaning = document.getElementById("meaning");
+  Meaning.innerHTML = "Meaning:    " + geetaData[i].meaning.en +  "<br><br>";
+
+  var summary = document.getElementById("summary");
+  summary.innerHTML = "Summary:      " + geetaData[i].summary.en +  "<br><br>";
+
+  }
+ 
+var i = 0;
+function add(){
+  if(i<=17){
+  i = i+1;
+  }
+  geetafunction();
+}
+
+function sub(){
+if(i>=0){
+  i = i-1;
+}
+  geetafunction();
+}
+
+geetafunction();
+
+
+
+</script>
+
+
+
+  
+<button onclick="sub()">previous</button>
+<button onclick="add()">Next</button>
+
+
+</body>
+
+</html>
